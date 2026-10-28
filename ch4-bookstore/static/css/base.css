@@ -9,5 +9,10 @@ h1 {
 
 .bookworm {
     height: 200px;
-    wight: auto;
+    width: auto;
+}
+
+.bookcover {
+    height: 300px;
+    width: auto;
 }
