@@ -9,3 +9,4 @@ django-allauth==0.50.0
 environs[django]==9.5.0
 marshmallow<4 # Prevent dependency conflict with environ
 pillow==9.0.1
+django-debug-toolbar==3.4.0
