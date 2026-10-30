@@ -1,18 +1,19 @@
+from .views import HomePageView, AboutPageView
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve 
-
-from .views import HomePageView, AboutPageView
+from django.core.cache import cache
 
 
 class HomepageTests(SimpleTestCase):
     def setUp(self):  
+        cache.clear() # Clear the cache to force the response to render template
         url = reverse("home")
         self.response = self.client.get(url)
 
     def test_url_exists_at_correct_location(self):
         self.assertEqual(self.response.status_code, 200)
 
-    def test_homepage_template(self):
+    def test_homepage_template(self): 
         self.assertTemplateUsed(self.response, "home.html")
 
     def test_homepage_contains_correct_html(self):
@@ -28,13 +29,14 @@ class HomepageTests(SimpleTestCase):
 
 class AboutPageTests(SimpleTestCase):  
     def setUp(self):  
+        cache.clear() # Clear the cache to force the response to render template
         url = reverse("about")
         self.response = self.client.get(url)
 
     def test_aboutpage_status_code(self):
         self.assertEqual(self.response.status_code, 200)
 
-    def test_aboutpage_template(self):
+    def test_aboutpage_template(self): 
         self.assertTemplateUsed(self.response, "about.html")
 
     def test_aboutpage_contains_correct_html(self):
