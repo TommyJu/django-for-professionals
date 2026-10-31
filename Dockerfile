@@ -11,4 +11,4 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
-RUN DJANGO_SECRET_KEY=build-only-not-a-real-secret python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
