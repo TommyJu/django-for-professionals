@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
+    command: gunicorn django_project.wsgi -b 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
@@ -9,14 +9,14 @@ services:
     depends_on:
       - db
     env_file:
-      - .env.development
+      - .env
 
   db:
     image: postgres:13
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    env_file:
+       - .env
 
 volumes:
   postgres_data:

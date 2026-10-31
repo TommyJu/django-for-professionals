@@ -193,7 +193,7 @@ STATIC_URL = 'static/'
 # Add project-wide static folder 
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Add project-wide media folder for user-uploaded content
 MEDIA_URL = "/media/"
